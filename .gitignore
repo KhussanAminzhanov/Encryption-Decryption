@@ -1,0 +1,11 @@
+# Project exclude paths
+/.gradle/
+/Encryption-Decryption/task/build/
+/Encryption-Decryption/task/out/
+/Encryption-Decryption/task/out/production/classes/
+/Problems/Burger store/out/
+/Problems/Burger store/out/production/classes/
+/Problems/Robot/out/
+/Problems/Robot/out/production/classes/
+/Problems/The secret enumeration/out/
+/Problems/The secret enumeration/out/production/classes/
