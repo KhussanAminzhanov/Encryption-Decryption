@@ -9,25 +9,38 @@ import java.nio.file.Paths;
 public class Main {
 
     public static String readFileAsString(String filename) {
-        String text = "";
         try {
-            text = new String(Files.readAllBytes(Paths.get(filename)));
+            return new String(Files.readAllBytes(Paths.get(filename)));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return text;
+        return "";
     }
 
     public static String[] parseParameters(String[] args) {
         String mode = "enc", key = "0", data = "", out = "console", alg = "shift";
         int index = 0;
         while (index < args.length) {
-            if (args[index].equals("-out")) out = args[index+1];
-            if (args[index].equals("-in")) data = readFileAsString(args[index+1]);
-            if (args[index].equals("-mode")) mode = args[index + 1];
-            if (args[index].equals("-key")) key = args[index+1];
-            if (args[index].equals("-data")) data = args[index+1];
-            if (args[index].equals("-alg")) alg = args[index+1];
+            switch (args[index]) {
+                case "-out":
+                    out = args[index + 1];
+                    break;
+                case "-in":
+                    data = readFileAsString(args[index + 1]);
+                    break;
+                case "-mode":
+                    mode = args[index + 1];
+                    break;
+                case "-key":
+                    key = args[index + 1];
+                    break;
+                case "-data":
+                    data = args[index + 1];
+                    break;
+                case "-alg":
+                    alg = args[index + 1];
+                    break;
+            }
             index += 2;
         }
         return new String[]{mode, data, key, out, alg};
@@ -35,7 +48,7 @@ public class Main {
 
     public static void main(String[] args) {
         String[] params = parseParameters(args);
-            String mode = params[0];
+        String mode = params[0];
         String text = params[1];
         String alg = params[4];
         Context context = new Context();
